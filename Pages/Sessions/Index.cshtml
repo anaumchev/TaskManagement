@@ -1,0 +1,40 @@
+﻿@page
+@model TaskManagement.Pages.Sessions.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<h4>Only Admin users are allowed to see sessions.</h4>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Session[0].ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Session[0].Role)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Session)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    |
+                    <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
